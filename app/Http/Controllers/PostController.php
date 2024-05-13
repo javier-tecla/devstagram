@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
@@ -14,8 +15,10 @@ class PostController extends Controller implements HasMiddleware
         ];
     }
 
-    public function index()
+    public function index(User $user)
     {
-        return view('dashboard');
+        return view('dashboard', [
+            'user' => $user
+        ]);
     }
 }
