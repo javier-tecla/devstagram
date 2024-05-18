@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
+
 class PostController extends Controller implements HasMiddleware
 {
     public static function middleware(): array
@@ -25,5 +26,13 @@ class PostController extends Controller implements HasMiddleware
     public function create()
     {
         return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'titulo' => 'required|max:255',
+            'descripcion' => 'required'
+        ]);
     }
 }
