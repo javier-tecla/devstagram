@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Support\Facades\File;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
 class PostController extends Controller implements HasMiddleware
 
@@ -84,6 +85,13 @@ class PostController extends Controller implements HasMiddleware
     {
         $this->authorize('delete', $post);
         $post->delete();
+
+        // Eliminar la imagen
+        $imagen_path = public_path('uploads/' . $post->imagen);
+
+        if(File::exists($imagen_path)) {
+            unlink($imagen_path);
+        }
 
         return redirect()->route('posts.index', auth()->user()->username);
     }
