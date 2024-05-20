@@ -6,14 +6,20 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
-
+use Illuminate\Routing\Controllers\Middleware;
 
 class PostController extends Controller implements HasMiddleware
+
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public static function middleware(): array
     {
         return [
-            'auth',
+            new Middleware('auth', except: ['show', 'index']),
         ];
     }
 
