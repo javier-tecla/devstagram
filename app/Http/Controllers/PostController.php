@@ -66,7 +66,7 @@ class PostController extends Controller implements HasMiddleware
         return redirect()->route('posts.index', auth()->user()->username);
     }
 
-    public function show(Post $post)
+    public function show(User $user, Post $post)
     {
         return view('posts.show', [
             'post' => $post
