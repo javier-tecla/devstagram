@@ -75,7 +75,8 @@ class PostController extends Controller implements HasMiddleware
     public function show(User $user, Post $post)
     {
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'user' => $user
         ]);
     }
 }
