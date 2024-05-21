@@ -19,7 +19,7 @@
                     @auth
                         @if ($user->id === @auth()->user()->id)
                             <a 
-                                href="{{ route('perfil.index', $user) }}"
+                                href="{{ route('perfil.index') }}"
                                 class="text-gray-500 hover:text-gray-600 cursor-pointer"
                             
                             >

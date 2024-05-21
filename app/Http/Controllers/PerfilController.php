@@ -22,6 +22,6 @@ class PerfilController extends Controller implements HasMiddleware
 
     public function index()
     {
-        
+        return view('perfil.index');
     }
 }
