@@ -48,8 +48,9 @@
                 </p>
 
                 @auth
+                    @if($user->id !== auth()->user()->id )
                 <form 
-                    action=""
+                    action="{{ route('users.follow', $user) }}"
                     method="POST"
                 >
                     @csrf
@@ -71,6 +72,7 @@
                     value="Dejar de Seguir"
                 />
             </form>
+            @endif
                 @endauth
 
             </div>
