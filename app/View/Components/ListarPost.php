@@ -8,12 +8,13 @@ use Illuminate\View\Component;
 
 class ListarPost extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $posts;
+    public $emptyMessage;
+
+    public function __construct($posts, $emptyMessage)
     {
-        //
+        $this->posts = $posts;
+        $this->emptyMessage = $emptyMessage;
     }
 
     /**
